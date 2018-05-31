@@ -4,7 +4,7 @@ description: Configuration affecting traffic routing
 location: https://istio.io/docs/reference/config/istio.networking.v1alpha3.html
 layout: protoc-gen-docs
 generator: protoc-gen-docs
-number_of_entries: 39
+number_of_entries: 40
 ---
 <p>Configuration affecting traffic routing. Here are a few terms useful to define
 in the context of traffic routing.</p>
@@ -1446,6 +1446,48 @@ for further details about cross origin resource sharing.</p>
 <td>
 <p>Additional HTTP headers to add before forwarding a request to the
 destination service.</p>
+
+</td>
+</tr>
+<tr id="HTTPRoute.health_check">
+<td><code>healthCheck</code></td>
+<td><code><a href="#HealthCheck">HealthCheck</a></code></td>
+<td>
+<p>Identify request as a health check</p>
+
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<h2 id="HealthCheck">HealthCheck</h2>
+<section>
+<p>HealthCheck can be used to identify a request as a health check, and determine
+whether it should be passed through or handled based on a cached response.</p>
+
+<table class="message-fields">
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr id="HealthCheck.pass_through_mode">
+<td><code>passThroughMode</code></td>
+<td><code>bool</code></td>
+<td>
+<p>Specifies whether the filter operates in pass through mode or not.</p>
+
+</td>
+</tr>
+<tr id="HealthCheck.cache_time">
+<td><code>cacheTime</code></td>
+<td><code><a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration">google.protobuf.Duration</a></code></td>
+<td>
+<p>If operating in pass through mode, the amount of time in milliseconds
+that the filter should cache the upstream response.</p>
 
 </td>
 </tr>

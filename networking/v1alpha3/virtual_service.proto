@@ -374,6 +374,9 @@ message HTTPRoute {
   // Additional HTTP headers to add before forwarding a request to the
   // destination service.
   map<string, string> append_headers = 11;
+
+  // Identify request as a health check
+  HealthCheck health_check = 12;
 }
 
 // Describes match conditions and actions for routing TCP traffic. The
@@ -919,4 +922,15 @@ message PortSelector {
     // $hide_from_docs
     string name = 2;
   }
+}
+
+// HealthCheck can be used to identify a request as a health check, and determine
+// whether it should be passed through or handled based on a cached response.
+message HealthCheck {
+  // Specifies whether the filter operates in pass through mode or not.
+  bool pass_through_mode = 1;
+
+  // If operating in pass through mode, the amount of time in milliseconds
+  // that the filter should cache the upstream response.
+  google.protobuf.Duration cache_time = 2;
 }
